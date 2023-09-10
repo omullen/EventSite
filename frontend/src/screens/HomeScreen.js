@@ -1,16 +1,16 @@
 import React from 'react'
 import {Col, Row} from 'react-bootstrap'
-import products from '../products'
-import Product from '../components/Product'
+import events from '../events'
+import Event from '../components/Event'
 
 const HomeScreen = () => {
   return (
     <>
     <h1>Events</h1>
     <Row>
-        {products.map(p =>(
+        {events.map(e =>(
             <Col sm={12} md={6} lg={4} xl={3}>
-                <Product product={p} />
+                <Event event={e} />
             </Col>
         ))
         }

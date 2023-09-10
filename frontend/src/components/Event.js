@@ -2,25 +2,25 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const Product = ({product}) => {
+const Event = ({event}) => {
   return (
-    <Link to={`/product/${product._id}`} variant="info">
+    <Link to={`/event/${event._id}`} variant="info">
     <Card className='my-3 my-p'>
-        <Card.Img src={product.image} variant='top' />
+        <Card.Img src={event.image} variant='top' />
         <Card.Body>
             <Card.Title as='div'>
-                <strong>{product.name}</strong>
+                <strong>{event.name}</strong>
             </Card.Title>
             <Card.Text as='div'>
-            <i class="fa-solid fa-calendar-days"></i> {product.date}
+            <i class="fa-solid fa-calendar-days"></i> {event.date}
             </Card.Text>
             <Card.Text as='div'>
                 <div className='my-3'>
-                <i class="fa-solid fa-people-group"></i> {product.attending} attending
+                <i class="fa-solid fa-people-group"></i> {event.attending} attending
                 </div>
             </Card.Text>
             <Card.Text as='h3'>
-                ${product.price}
+                ${event.price}
             </Card.Text>
         </Card.Body>
     
@@ -29,4 +29,4 @@ const Product = ({product}) => {
   )
 }
 
-export default Product
+export default Event
