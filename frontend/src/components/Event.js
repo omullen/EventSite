@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom'
 
 const Event = ({event}) => {
   return (
-    <Link to={`/event/${event._id}`} variant="info">
-    <Card className='my-3 my-p'>
+    
+    <Card className='my-3 my-p' data-bs-theme="dark">
+        <Link to={`/event/${event._id}`} variant="info">
         <Card.Img src={event.image} variant='top' />
+        </Link>
         <Card.Body>
             <Card.Title as='div'>
                 <strong>{event.name}</strong>
             </Card.Title>
             <Card.Text as='div'>
-            <i class="fa-solid fa-calendar-days"></i> {event.date}
+            <i class="fa-solid fa-calendar-days"></i> {event.cal}
             </Card.Text>
             <Card.Text as='div'>
                 <div className='my-3'>
@@ -23,9 +25,7 @@ const Event = ({event}) => {
                 ${event.price}
             </Card.Text>
         </Card.Body>
-    
     </Card>
-    </Link>
   )
 }
 
