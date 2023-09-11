@@ -1,12 +1,14 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import {motion} from 'framer-motion'
 
 const Event = ({event}) => {
   return (
     
-    <Card className='my-3 my-p' data-bs-theme="dark">
-        <Link to={`/event/${event._id}`} variant="info">
+<motion.div whileHover={{ scale: 1.1 }} >
+    <Card className='card text-white bg-primary mb-3'>
+        <Link to={`/event/${event._id}`} variant="info" data-bs-theme="dark">
         <Card.Img src={event.image} variant='top' />
         </Link>
         <Card.Body>
@@ -26,6 +28,8 @@ const Event = ({event}) => {
             </Card.Text>
         </Card.Body>
     </Card>
+</motion.div>
+
   )
 }
 

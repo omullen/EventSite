@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import {Row, Col, Image, Card, Button, ListGroup} from 'react-bootstrap'
 import events from '../events'
+import {motion} from 'framer-motion'
 
 const EventScreen = () => {
 const params = useParams();
@@ -9,7 +10,8 @@ const event = events.find(e => e._id === params.id)
 
 return (
     <>
-    <Link className='btn btn-light my-3' to='/'>Go back</Link>
+    <motion.div whileHover={{ scale: 1.03 }} >
+        <Link className='btn btn-primary my-3' to='/'><i class="fa-solid fa-arrow-left"></i> Go back</Link></motion.div>
     <Row>
         <Col md={6}>
             <Image src={event.image} alt={event.name} fluid />
@@ -54,13 +56,14 @@ return (
                             : 'Sold Out'}</Col>
                         </Row>
                     <ListGroup.Item>
+                    <motion.div whileHover={{ scale: 1.1 }} >
                         <Button
                         className='btn-block'
-                        bg="info"
-                        variant="info"
+                        bg="success"
+                        variant="success"
                         type='btn'
                         disabled={event.countInStock === 0}
-                        >RSVP</Button>
+                        >RSVP</Button></motion.div>
                     </ListGroup.Item>
                     </ListGroup.Item>
                 </ListGroup>
