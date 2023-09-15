@@ -53,7 +53,7 @@ return (
                             : event.countInStock === 2 ? 'Only 2 Spots Left!'
                             : event.countInStock === 1 ? 'Only 1 Spot Left!'
                             : event.countInStock > 0 ? 'Spots Left!'
-                            : 'Sold Out'}</Col>
+                            : "Sold Out"}</Col>
                         </Row>
                     <ListGroup.Item>
                     <motion.div whileHover={{ scale: 1.1 }} >
