@@ -10,8 +10,8 @@ const events = [
         price: 15,
         countInStock: 1,
         attending: 49,
-        date: moment("20230914").hours(17).format('MMMM Do YYYY, h:mm'),
-        cal: moment("20230914").hours(17).calendar(),
+        date: moment("20230917").hours(17).format('MMMM Do YYYY, h:mm'),
+        cal: moment("20230917").hours(17).calendar(),
     },
     {
         _id: '2',
