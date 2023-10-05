@@ -16,7 +16,7 @@ const Event = ({event}) => {
                 <strong>{event.name}</strong>
             </Card.Title>
             <Card.Text as='div'>
-            <i class="fa-solid fa-calendar-days"></i> {event.cal}
+            <i class="fa-solid fa-calendar-days"></i> {event.date}
             </Card.Text>
             <Card.Text as='div'>
                 <div className='my-3'>

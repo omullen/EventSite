@@ -1,9 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Col, Row} from 'react-bootstrap'
-import events from '../events'
+import axios from 'axios'
 import Event from '../components/Event'
 
 const HomeScreen = () => {
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      await axios.get('/api/events')
+    }
+  })
+
   return (
     <>
     <h1>Events</h1>
