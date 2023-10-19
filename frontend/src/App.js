@@ -15,6 +15,8 @@ const App = () => {
           <Routes>
             <Route path="/" exact element={<HomeScreen />} />
             <Route path="/event/:id" element={<EventScreen />} />
+            <Route path="/cart/:id" element={<CartScreen />} />
+            <Route path="/cart" element={<CartScreen />} />
           </Routes>
         </Container>
         </main>

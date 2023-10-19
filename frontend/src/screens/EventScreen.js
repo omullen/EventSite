@@ -1,18 +1,37 @@
-import React from 'react'
-import { useParams, Link } from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import {Row, Col, Image, Card, Button, ListGroup} from 'react-bootstrap'
-import events from '../events'
 import {motion} from 'framer-motion'
+import { listEventDetails } from '../actions/eventActions'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 const EventScreen = () => {
+const [qty, setQty] = useState(1)
 const params = useParams();
-const event = events.find(e => e._id === params.id)
+const navigate = useNavigate
+const dispatch = useDispatch();
+const eventDetails = useSelector((state) => state.eventDetails);
+const {loading, error, event} = eventDetails
+
+useEffect(() => {
+   dispatch(listEventDetails(params.id))
+    }, [dispatch, params])
+
+const addToCartHandler = () => {
+    navigate(`/cart/${params.id}?qty=${qty}`)
+}
 
 return (
     <>
     <motion.div whileHover={{ scale: 1.03 }} >
         <Link className='btn btn-primary my-3' to='/'><i class="fa-solid fa-arrow-left"></i> Go back</Link></motion.div>
-    <Row>
+        {
+          loading ? (<Loader />) 
+            : error ? (<Message variant='danger'>{error}</Message>) :
+    
+    (<Row>
         <Col md={6}>
             <Image src={event.image} alt={event.name} fluid />
         </Col>
@@ -63,15 +82,18 @@ return (
                         variant="success"
                         type='btn'
                         disabled={event.countInStock === 0}
+                        onClick={addToCartHandler}
                         >RSVP</Button></motion.div>
                     </ListGroup.Item>
                     </ListGroup.Item>
                 </ListGroup>
             </Card>
         </Col>
-    </Row>
+    </Row>)
+    }
     </>
   )
+
 }
 
 export default EventScreen
