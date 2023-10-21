@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import {Row, Col, Image, Card, Button, ListGroup} from 'react-bootstrap'
+import {Row, Col, Image, Card, Button, ListGroup, Form} from 'react-bootstrap'
 import {motion} from 'framer-motion'
 import { listEventDetails } from '../actions/eventActions'
 import Loader from '../components/Loader'
@@ -10,9 +10,10 @@ import Message from '../components/Message'
 const EventScreen = () => {
 const [qty, setQty] = useState(1)
 const params = useParams();
-const navigate = useNavigate
 const dispatch = useDispatch();
-const eventDetails = useSelector((state) => state.eventDetails);
+const navigate = useNavigate()
+
+const eventDetails = useSelector((state) => state.eventDetails)
 const {loading, error, event} = eventDetails
 
 useEffect(() => {
@@ -74,6 +75,27 @@ return (
                             : event.countInStock > 0 ? 'Spots Left!'
                             : "Sold Out"}</Col>
                         </Row>
+                    </ListGroup.Item>
+                    {event.countInStock > 0 && (
+                    <ListGroup.Item>
+                        <Row>
+                            <Col>Qty</Col>
+                            <Col>
+                            <Form.Control
+                                as='select'
+                                value={qty}
+                                onChange={e => setQty(e.target.value)}>
+                                    {
+                                        [...Array(event.countInStock.keys())].map(x =>
+                                           (
+                                            <option key={x+1} value={x+1}>{x+1}</option>
+                                           )
+                                        )
+                                    }
+                            </Form.Control>
+                            </Col>
+                        </Row>
+                    </ListGroup.Item>)}
                     <ListGroup.Item>
                     <motion.div whileHover={{ scale: 1.1 }} >
                         <Button
@@ -85,7 +107,6 @@ return (
                         onClick={addToCartHandler}
                         >RSVP</Button></motion.div>
                     </ListGroup.Item>
-                    </ListGroup.Item>
                 </ListGroup>
             </Card>
         </Col>
@@ -93,7 +114,6 @@ return (
     }
     </>
   )
-
 }
 
 export default EventScreen
